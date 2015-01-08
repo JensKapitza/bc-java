@@ -1,9 +1,14 @@
 package org.bouncycastle.openpgp;
 
+import java.util.Iterator;
+
+import org.bouncycastle.util.ArrayIterator;
+import org.bouncycastle.util.Iterable;
+
 /**
  * A list of PGP signatures - normally in the signature block after literal data.
  */
-public class PGPSignatureList
+public class PGPSignatureList implements Iterable
 {
     PGPSignature[]    sigs;
     
@@ -37,4 +42,8 @@ public class PGPSignatureList
     {
         return (sigs.length == 0);
     }
+
+	public Iterator iterator() {
+		return new ArrayIterator(sigs);
+	}
 }
